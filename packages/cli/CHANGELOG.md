@@ -1,5 +1,20 @@
 # auth
 
+## 1.6.24
+
+### Patch Changes
+
+- [#10302](https://github.com/better-auth/better-auth/pull/10302) [`0f2cc1b`](https://github.com/better-auth/better-auth/commit/0f2cc1b33b77850948dac4d889e5f46bba41e8d5) Thanks [@momomuchu](https://github.com/momomuchu)! - Recover when `auth generate`'s config imports the not-yet-generated `--output` file (e.g. Convex first-run `import schema from "./schema"`), by stubbing a temporary placeholder and retrying config load.
+
+- [#10221](https://github.com/better-auth/better-auth/pull/10221) [`6f3ba45`](https://github.com/better-auth/better-auth/commit/6f3ba45639579da152b69e8e5342e02f28288670) Thanks [@paoloricciuti](https://github.com/paoloricciuti)! - fix: stub SvelteKit's explicit-environment-variables modules
+
+- [#10333](https://github.com/better-auth/better-auth/pull/10333) [`99dbdd7`](https://github.com/better-auth/better-auth/commit/99dbdd7ea98740d11689394220a718dfb9579276) Thanks [@c-nicol](https://github.com/c-nicol)! - Fixes Drizzle schema generation for fields that are both unique: true and index: true.
+
+- Updated dependencies [[`03dc5a0`](https://github.com/better-auth/better-auth/commit/03dc5a046f536994950800ea557b8e2e2e0cdfdd), [`ef4d273`](https://github.com/better-auth/better-auth/commit/ef4d27360cec8a0bc11a94e135ea4a3dd32b1969), [`99dbdd7`](https://github.com/better-auth/better-auth/commit/99dbdd7ea98740d11689394220a718dfb9579276), [`8f2dedd`](https://github.com/better-auth/better-auth/commit/8f2dedd89301da9fb52c1a64df6a9683f9be55fd), [`3bf0e49`](https://github.com/better-auth/better-auth/commit/3bf0e4981e025ba9af684013a27b0102a04f7c56), [`f59a0ee`](https://github.com/better-auth/better-auth/commit/f59a0ee7895a024ddd4c5c387344173888e17be4), [`0f2cc1b`](https://github.com/better-auth/better-auth/commit/0f2cc1b33b77850948dac4d889e5f46bba41e8d5), [`46d2bf0`](https://github.com/better-auth/better-auth/commit/46d2bf02c98902da7b344753372d48cfe0e5ebb3), [`29a373e`](https://github.com/better-auth/better-auth/commit/29a373eaf1778820061a9380c29831c2de2ce704)]:
+  - better-auth@1.6.24
+  - @better-auth/core@1.6.24
+  - @better-auth/telemetry@1.6.24
+
 ## 1.6.23
 
 ### Patch Changes

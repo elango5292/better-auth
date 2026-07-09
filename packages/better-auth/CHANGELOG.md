@@ -1,5 +1,36 @@
 # better-auth
 
+## 1.6.24
+
+### Patch Changes
+
+- [#10235](https://github.com/better-auth/better-auth/pull/10235) [`03dc5a0`](https://github.com/better-auth/better-auth/commit/03dc5a046f536994950800ea557b8e2e2e0cdfdd) Thanks [@ping-maxwell](https://github.com/ping-maxwell)! - Fixes silent foreign-key and adapter-join misrouting when a user remaps a built-in model name to a string that collides with another schema key
+
+- [#10336](https://github.com/better-auth/better-auth/pull/10336) [`ef4d273`](https://github.com/better-auth/better-auth/commit/ef4d27360cec8a0bc11a94e135ea4a3dd32b1969) Thanks [@Tushar-Khandelwal-2004](https://github.com/Tushar-Khandelwal-2004)! - Prevent verification callbacks from failing auth requests when cloning the request throws.
+
+- [#10333](https://github.com/better-auth/better-auth/pull/10333) [`99dbdd7`](https://github.com/better-auth/better-auth/commit/99dbdd7ea98740d11689394220a718dfb9579276) Thanks [@c-nicol](https://github.com/c-nicol)! - Fixes Drizzle schema generation for fields that are both unique: true and index: true.
+
+- [#10290](https://github.com/better-auth/better-auth/pull/10290) [`8f2dedd`](https://github.com/better-auth/better-auth/commit/8f2dedd89301da9fb52c1a64df6a9683f9be55fd) Thanks [@GautamBytes](https://github.com/GautamBytes)! - Expose the remote MCP auth client's 401 challenge headers to browser clients using CORS.
+
+- [#10190](https://github.com/better-auth/better-auth/pull/10190) [`3bf0e49`](https://github.com/better-auth/better-auth/commit/3bf0e4981e025ba9af684013a27b0102a04f7c56) Thanks [@gaurav-init](https://github.com/gaurav-init)! - Pass the endpoint context as the second argument to `beforeDeleteOrganization` and `afterDeleteOrganization` hooks in the organization plugin, matching the signature shown in the docs and the existing `databaseHooks` pattern. The Stripe plugin's `beforeDeleteOrganization` wrapper now forwards the context to user-supplied hooks instead of dropping it.
+
+- [#10040](https://github.com/better-auth/better-auth/pull/10040) [`f59a0ee`](https://github.com/better-auth/better-auth/commit/f59a0ee7895a024ddd4c5c387344173888e17be4) Thanks [@shiminshen](https://github.com/shiminshen)! - Organization invitations now let the database generate their `id` when ID generation is delegated to the database (e.g. `advanced.database.generateId: "uuid"` with a UUID-capable adapter such as Postgres), matching every other model. Previously `createInvitation` always generated the invitation `id` in application code, so invitation rows received an app-generated value instead of a database-generated one while organizations, members and teams correctly deferred to the database ([better-auth/better-auth#10024](https://github.com/better-auth/better-auth/issues/10024)). A caller-provided id (e.g. via `beforeCreateInvitation`) is still honored.
+
+- [#10302](https://github.com/better-auth/better-auth/pull/10302) [`0f2cc1b`](https://github.com/better-auth/better-auth/commit/0f2cc1b33b77850948dac4d889e5f46bba41e8d5) Thanks [@momomuchu](https://github.com/momomuchu)! - Prefer exact schema-key matches over `modelName` aliases in `getDefaultModelName`, so remapping a built-in table onto another table's schema key (e.g. `user.modelName = "account"`) does not reroute internal adapter queries to the wrong table.
+
+- [#10222](https://github.com/better-auth/better-auth/pull/10222) [`46d2bf0`](https://github.com/better-auth/better-auth/commit/46d2bf02c98902da7b344753372d48cfe0e5ebb3) Thanks [@ping-maxwell](https://github.com/ping-maxwell)! - fix: add no-store cache-control headers to get-session route
+
+- [#10316](https://github.com/better-auth/better-auth/pull/10316) [`29a373e`](https://github.com/better-auth/better-auth/commit/29a373eaf1778820061a9380c29831c2de2ce704) Thanks [@vinay-oppuri](https://github.com/vinay-oppuri)! - Recognize SQLite `BIGINT` as a valid number type in migration diffs so database-backed rate limiter columns like `lastRequest` no longer report spurious pending changes on every run.
+
+- Updated dependencies []:
+  - @better-auth/core@1.6.24
+  - @better-auth/drizzle-adapter@1.6.24
+  - @better-auth/kysely-adapter@1.6.24
+  - @better-auth/memory-adapter@1.6.24
+  - @better-auth/mongo-adapter@1.6.24
+  - @better-auth/prisma-adapter@1.6.24
+  - @better-auth/telemetry@1.6.24
+
 ## 1.6.23
 
 ### Patch Changes
