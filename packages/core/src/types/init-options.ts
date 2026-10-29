@@ -18,7 +18,11 @@ import type {
 	User,
 	Verification,
 } from "../db";
-import type { DBAdapterDebugLogOption, DBAdapterInstance } from "../db/adapter";
+import type {
+	DatabaseIndexIntrospector,
+	DBAdapterDebugLogOption,
+	DBAdapterInstance,
+} from "../db/adapter";
 import type { BaseAccount } from "../db/schema/account";
 import type { BaseRateLimit } from "../db/schema/rate-limit";
 import type { BaseSession } from "../db/schema/session";
@@ -631,6 +635,8 @@ export type BetterAuthOptions = {
 				| {
 						dialect: Dialect;
 						type: KyselyDatabaseType;
+						/** Custom index metadata for this dialect, used by the migration planner. */
+						introspectIndexes?: DatabaseIndexIntrospector;
 						/**
 						 * casing for table names
 						 *
@@ -667,6 +673,8 @@ export type BetterAuthOptions = {
 						 * Kysely instance
 						 */
 						db: Kysely<any>;
+						/** Custom index metadata for this connection, used by the migration planner. */
+						introspectIndexes?: DatabaseIndexIntrospector;
 						/**
 						 * Database type between postgres, mysql and sqlite
 						 */
