@@ -60,7 +60,7 @@ async function run(yes = true) {
 }
 
 describe("adapter-owned migrations", () => {
-	it("preserves the plan receiver when running adapter migrations", async () => {
+	it("calls runMigrations with the plan as this", async () => {
 		plan.runMigrations = vi.fn(async function (this: DBAdapterMigrationPlan) {
 			expect(this.toBeCreated[0]?.table).toBe("user");
 		});
@@ -107,7 +107,7 @@ describe("adapter-owned migrations", () => {
 		expect(process.exit).toHaveBeenCalledWith(1);
 	});
 
-	it("preserves unsafe-change refusal for adapter hooks", async () => {
+	it("still refuses unsafe changes from an adapter plan", async () => {
 		vi.mocked(adapter.getMigrations!).mockRejectedValue(
 			new UnsafeMigrationError("unsafe change"),
 		);

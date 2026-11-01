@@ -635,7 +635,10 @@ export type BetterAuthOptions = {
 				| {
 						dialect: Dialect;
 						type: KyselyDatabaseType;
-						/** Custom index metadata for this dialect, used by the migration planner. */
+						/**
+						 * Reads index metadata for the migration planner, if the dialect
+						 * can't use the default introspection for its `type`.
+						 */
 						introspectIndexes?: DatabaseIndexIntrospector;
 						/**
 						 * casing for table names
@@ -673,7 +676,10 @@ export type BetterAuthOptions = {
 						 * Kysely instance
 						 */
 						db: Kysely<any>;
-						/** Custom index metadata for this connection, used by the migration planner. */
+						/**
+						 * Reads index metadata for the migration planner, if the connection
+						 * can't use the default introspection for its `type`.
+						 */
 						introspectIndexes?: DatabaseIndexIntrospector;
 						/**
 						 * Database type between postgres, mysql and sqlite
