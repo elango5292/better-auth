@@ -33,7 +33,7 @@ import {
 import { findSchemaProblems } from "./schema-check";
 import type { KyselyDatabaseType } from "./types";
 
-interface KyselyAdapterConfig {
+export interface KyselyAdapterConfig {
 	/**
 	 * Database type.
 	 *
@@ -71,6 +71,16 @@ interface KyselyAdapterConfig {
 	 * @default false
 	 */
 	transaction?: boolean | undefined;
+	/**
+	 * Passed to the adapter factory. Useful when another package wraps this
+	 * adapter and retries aborted transactions.
+	 */
+	isRetryableError?: DBAdapter["isRetryableError"];
+	/**
+	 * Passed to the adapter factory, so `npx auth migrate` uses this plan
+	 * instead of the built-in one.
+	 */
+	getMigrations?: DBAdapter["getMigrations"];
 }
 
 export const kyselyAdapter = (
@@ -1020,6 +1030,8 @@ export const kyselyAdapter = (
 	adapterOptions = {
 		config: {
 			adapterId: "kysely",
+			isRetryableError: config?.isRetryableError,
+			getMigrations: config?.getMigrations,
 			adapterName: "Kysely Adapter",
 			usePlural: config?.usePlural,
 			debugLogs: config?.debugLogs,
